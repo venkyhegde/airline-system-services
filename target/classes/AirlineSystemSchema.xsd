@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://edu.uncc.ssdi/AirlineSystemSchema"
+	xmlns:tns="http://edu.uncc.ssdi/AirlineSystemSchema"
+	elementFormDefault="qualified">
+
+    <element name="LoginRequest" type="tns:LoginRequestType"></element>
+
+	<complexType name="LoginRequestType">
+		<sequence>
+			<element name="UserName" type="string"></element>
+			<element name="Password" type="string"></element>
+		</sequence>
+	</complexType>
+
+	<element name="LoginResponse" type="tns:LoginResponseType"></element>
+
+	<complexType name="LoginResponseType">
+		<sequence>
+			<element name="Id" type="int"></element>
+			<element name="FirstName" type="string"></element>
+			<element name="LastName" type="string"></element>
+			<element name="Email" type="string"></element>
+			<element name="Password" type="string"></element>
+			<element name="Address" type="string"></element>
+			<element name="IsAdmin" type="boolean"></element>
+			<element name="Dob" type="string"></element>
+			<element name="Status" type="tns:StatusType"></element>
+		</sequence>
+	</complexType>
+
+	<element name="RegistrationRequest" type="tns:RegistrationRequestType">
+	</element>
+
+	<complexType name="RegistrationRequestType">
+		<sequence>
+			<element name="FirstName" type="string"></element>
+			<element name="LastName" type="string"></element>
+			<element name="Email" type="string"></element>
+			<element name="Password" type="string"></element>
+			<element name="Address" type="string"></element>
+			<element name="Dob" type="string"></element>
+		</sequence>
+	</complexType>
+
+    <element name="RegistrationResponse"
+    	type="tns:RegistrationResponseType">
+    </element>
+    
+    <complexType name="RegistrationResponseType">
+     	<sequence>
+    		<element name="Id" type="int"></element>
+    		<element name="FirstName" type="string"></element>
+    		<element name="LastName" type="string"></element>
+    		<element name="Email" type="string"></element>
+    		<element name="Password" type="string"></element>
+    		<element name="Address" type="string"></element>
+    		<element name="IsAdmin" type="boolean"></element>
+    		<element name="Dob" type="string"></element>
+    		<element name="Status" type="tns:StatusType"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="StatusType">
+    	<sequence>
+    		<element name="Status" type="string"></element>
+    		<element name="StatusCode" type="string"></element>
+    		<element name="StatusDes" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    
+    <complexType name="GetCityResponseType">
+    	<sequence>
+    		<element name="Status" type="tns:StatusType"></element>
+    		<element name="City" type="tns:CityType" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+    
+    <element name="GetCityResponse" type="tns:GetCityResponseType"></element>
+
+    <complexType name="CityType">
+    	<sequence>
+    		<element name="CityId" type="int"></element>
+    		<element name="CityName" type="string"></element>
+    		<element name="CountryId" type="int"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="FlightSearchRequest"
+    	type="tns:FlightSearchRequestType">
+    </element>
+    
+    <complexType name="FlightSearchRequestType">
+    	<sequence>
+    		<element name="From" type="string"></element>
+    		<element name="To" type="string"></element>
+    		<element name="Date" type="date"></element>
+    		<element name="NumberOfSeats" type="int"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="FlightSearchResponse"
+    	type="tns:FlightSearchResponseType">
+    </element>
+    
+    <complexType name="FlightSearchResponseType">
+    	<sequence>
+    		<element name="Status" type="tns:StatusType"></element>
+    		<element name="FlightDetail" type="tns:FlightDetailType" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="FlightDetailType">
+    	<sequence>
+    		<element name="FlightId" type="int"></element>
+    		<element name="AirlineName" type="string"></element>
+    		<element name="Logo" type="string"></element>
+    		<element name="TotalPrice" type="double"></element>
+    		<element name="DateOfJourney" type="string"></element>
+    		<element name="Duration" type="string"></element>
+    		<element name="From" type="string"></element>
+    		<element name="To" type="string"></element>
+    		<element name="PricePerSeat" type="double"></element>
+    		<element name="FlightNumber" type="string"></element>
+    		<element name="NumberOfSeats" type="int"></element>
+    		<element name="ItineraryId" type="int"></element>
+    		<element name="DepartureTime" type="double"></element>
+    		<element name="ArrivalTime" type="double"></element>
+    	</sequence>
+
+    </complexType>
+
+    <element name="BookingConfirmationRequest"
+    	type="tns:BookingConfirmationRequestType">
+    </element>
+    
+    <complexType name="BookingConfirmationRequestType">
+    	<sequence>
+    		<element name="UserId" type="int"></element>
+    		<element name="ItineraryId" type="int"></element>
+    		<element name="NumberOfSeatBooked" type="int"></element>
+    		<element name="UpdatedSeats" type="boolean"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</element>
+    		<element name="BookingDate" type="date"></element>
+    		<element name="TicketCost" type="double"></element>
+    		<element name="BookedSeats" type="string"></element>
+    		<element name="Duration" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="BookingConfirmationResponse"
+    	type="tns:BookingConfirmationResponseType">
+    </element>
+    
+    <complexType name="BookingConfirmationResponseType">
+    	<sequence>
+    		<element name="IsMailSent" type="boolean"></element>
+    		<element name="IsBookingConfirmed" type="boolean"></element>
+    		<element name="Status" type="tns:StatusType"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="BookingHistoryResponse"
+    	type="tns:BookingHistoryResponseType">
+    </element>
+    
+    <complexType name="BookingHistoryResponseType">
+    	<sequence>
+    		<element name="Status" type="tns:StatusType"></element>
+    		<element name="BookingHistoryDetail"
+    			type="tns:BookingHistoryDetailType" maxOccurs="unbounded" minOccurs="0">
+    		</element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="AirlineType">
+    	<sequence>
+    		<element name="AirlineName" type="string"></element>
+    		<element name="AirlineLogo" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="BookingHistoryDetailType">
+    	<sequence>
+    		<element name="DateOfBooking" type="string"></element>
+    		<element name="TotalCost" type="double"></element>
+    		<element name="NumberOfSeats" type="int"></element>
+    		<element name="From" type="string"></element>
+    		<element name="To" type="string"></element>
+    		<element name="FlightNumber" type="string"></element>
+    		<element name="Airline" type="tns:AirlineType"></element>
+    		<element name="ItineraryId" type="int"></element>
+    		<element name="BokingId" type="int"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="GetSeatResponse" type="tns:GetSeatResponseType"></element>
+    
+    <complexType name="GetSeatResponseType">
+    	<sequence>
+    		<element name="Seats" type="boolean" maxOccurs="unbounded"
+    			minOccurs="0">
+    		</element>
+    		<element name="Status" type="tns:StatusType"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="ViewTicketResponse"
+    	type="tns:ViewTicketResponseType">
+    </element>
+    
+    <complexType name="ViewTicketResponseType">
+    	<sequence>
+    		<element name="Status" type="tns:StatusType"></element>
+    		<element name="ConfirmationDetail"
+    			type="tns:ConfirmationDetailType">
+    		</element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="ConfirmationDetailType">
+    	<sequence>
+    		<element name="FlightInfo" type="tns:FlightInfoType"></element>
+    		<element name="PaymentInfo" type="tns:PaymentInfoType"></element>
+    		<element name="BookingInfo" type="tns:BookingInfoType"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="FlightInfoType">
+    	<sequence>
+    		<element name="Operator" type="string"></element>
+    		<element name="Logo" type="string"></element>
+    		<element name="FlightNumber" type="string"></element>
+    		<element name="DateOfJourney" type="string"></element>
+    		<element name="Duration" type="string"></element>
+    		<element name="Source" type="string"></element>
+    		<element name="Destination" type="string"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="PaymentInfoType">
+    	<sequence>
+    		<element name="PricePerTicket" type="string"></element>
+    		<element name="TotalPrice" type="string"></element>
+    		<element name="ModeOfPayment" type="string"></element>
+    		<element name="BookingStatus" type="string"></element>
+    		<element name="NumberOfSeats" type="string"></element>
+    		<element name="SeatNumber" type="string"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="BookingInfoType">
+    	<sequence>
+    		<element name="Name" type="string"></element>
+    		<element name="Email" type="string"></element>
+    		<element name="BookingId" type="int"></element>
+    	</sequence>
+    </complexType>
+</schema>
