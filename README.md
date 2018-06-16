@@ -13,4 +13,4 @@ The Spring Boot application which exposes the RESTFul services to a Filght Reser
 
 This appliaction was developed as the academic project for the course, Software System Design and Implementation at UNC Charlotte.
 
-The User Interface of this application was developed using the VueJS - Github link to UI Project - 
+The User Interface of this application was developed using the VueJS - Github link to UI Project - https://github.com/venkyhegde/airline-system-ui
