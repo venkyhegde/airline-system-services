@@ -1,4 +1,4 @@
-# airline-system-services
+# Airline System Services
 
 The Spring Boot application which exposes the RESTFul services to a Filght Reservation Application. The application has web services to search the flights between the source and destination, to book the tickets, cancel/modify the resevation, to make payment, and to see the booking history and to notify the user regarding the booking.
 
